@@ -12,16 +12,16 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CatTest {
-
-
     @Test
-   public void  getSoundTest(){
+   public void  getSoundTest() {
+        String expectedSound = "Мяу";
         Feline feline = new Feline();
         Cat cat = new Cat(feline);
         String meow = cat.getSound();
-        assertEquals("Звук не совпадает с ожидаемым", "Мяу", meow);
+        assertEquals("Звук не совпадает с ожидаемым", expectedSound, meow);
     }
-@Mock
+
+    @Mock
     private Feline feline;
 
     @Test
@@ -31,5 +31,4 @@ public class CatTest {
         List<String> expected = List.of("Животные", "Птицы", "Рыба");
         assertEquals("Ошибка: ожидаемый текст не совпал с реальным", expected, cat.getFood());
     }
-
 }

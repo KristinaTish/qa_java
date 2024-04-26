@@ -4,6 +4,7 @@ import java.util.List;
 
 public class LionAlex extends Lion {
     private static List<String> alexsFriends = List.of("Марти", "Глория", "Мелман");
+
     public LionAlex(Feline feline) throws Exception {
         super(feline, "Самец");
     }

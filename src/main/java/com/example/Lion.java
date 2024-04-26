@@ -1,12 +1,10 @@
 package com.example;
+
 import java.util.List;
 
 public class Lion {
-
     boolean hasMane;
-    Feline feline; //создали приватное поле типа Predator, объект predator - поле класса Lion
-
-    // объект попадает в переменную класса
+    private Feline feline;
 
     public Lion(Feline feline, String sex) throws Exception {
         this.feline = feline;
@@ -18,8 +16,6 @@ public class Lion {
             throw new Exception("Используйте допустимые значения пола животного - самец или самка");
         }
     }
-
-   // Feline feline = new Feline();
 
     public int getKittens() {
         return feline.getKittens();

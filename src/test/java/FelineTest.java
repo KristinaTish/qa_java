@@ -5,11 +5,12 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.Spy;
-import org.mockito.internal.matchers.Any;
 import org.mockito.junit.MockitoJUnitRunner;
-import static org.junit.Assert.assertEquals;
 
 import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+
 
 @RunWith(MockitoJUnitRunner.class)
 public class FelineTest {
@@ -17,25 +18,27 @@ public class FelineTest {
     private Animal animal;
     @Spy
     private Feline feline = new Feline();
+
     @Test
     public void eatMeatTest() throws Exception {
+        List<String> foodList = List.of("Животные", "Птицы", "Рыба");
         Feline feline = new Feline();
-            feline.eatMeat();
-        }
+         Mockito.when(animal.getFood("Хищник")).thenReturn(foodList);
+        List<String> actual = feline.eatMeat();
+        assertEquals("Список еды не совпадает", foodList, actual);
+    }
 
     @Test
     public void testGetKittensCount() throws Exception {
         feline.getKittens();
         Mockito.verify(feline).getKittens(1);
-
     }
 
     @Test
-    public void getFamilyTest(){
+    public void getFamilyTest() {
         String family = feline.getFamily();
         String expected = "Кошачьи";
-        assertEquals("Возвратилось некорректное значение семьи", expected,family);
+        assertEquals("Возвратилось некорректное значение семьи", expected, family);
     }
-
-    }
+}
 

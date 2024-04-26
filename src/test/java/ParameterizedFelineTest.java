@@ -3,6 +3,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+import static org.junit.Assert.assertEquals;
+
 @RunWith(Parameterized.class)
 public class ParameterizedFelineTest {
     private final int kittensCount;
@@ -11,7 +13,7 @@ public class ParameterizedFelineTest {
         this.kittensCount = kittensCount;
     }
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "Количество котят. Кол-во = {0}")
     public static Object[][] getKittensQuantity() {
         return new Object[][]{
                 {0},
@@ -27,7 +29,8 @@ public class ParameterizedFelineTest {
     @Test
     public void testGetKittensCount() throws IllegalArgumentException {
         Feline feline = new Feline();
-        feline.getKittens(kittensCount);
+        int actual = feline.getKittens(kittensCount);
+        assertEquals(kittensCount, actual);
     }
 
 }
